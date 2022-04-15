@@ -58,7 +58,7 @@ module.exports = {
       );
       //console.log(req.isAuth);
       console.log("Before return");
-      return { token, id: user._id };
+      return { token, id: user._id ,role:user.role};
     } catch (error) {
       console.log(error);
       return error;

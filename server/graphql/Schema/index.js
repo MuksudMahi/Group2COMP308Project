@@ -11,6 +11,7 @@ module.exports = graphql.buildSchema(`
     type LoginReturnType{
         token:String  
         id:ID 
+        role:String
     }
     type MessageReturn{
         message:String 
