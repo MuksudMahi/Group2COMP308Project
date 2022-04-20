@@ -20,6 +20,18 @@ module.exports = graphql.buildSchema(`
         patient: ID
     }
 
+    type Alert{
+        _id: ID!
+        message:String!,
+        unread:Boolean!,
+        patient:ID!,
+        created:Date!
+    }
+    type MotivationalTips{
+        _id: ID!
+        tip:String!,
+        created:Date!
+    }
 
     type LoginReturnType{
         token:String  
@@ -35,11 +47,13 @@ module.exports = graphql.buildSchema(`
         createUser(username:String!, password:String!, role:String!):MessageReturn!
         login(username:String!,password:String!):LoginReturnType!
         createClinicalVisit(bodyTemperature:Int!, heartRate:Int!, bloodPressure:String!,respiratoryRate: Int!,nurse: String,patient: String):MessageReturn!
+        createMotivationalTips(tip:String!):MessageReturn!
     }
     type RootQuery{
         user(userId:String!):User!
         findUserByRole(role:String!):[User]
         findClinicalVisitsByNurse(nurse:ID!):[ClinicalVisit]
+        findAlerts:[Alert]
     }
     schema{
         query:RootQuery

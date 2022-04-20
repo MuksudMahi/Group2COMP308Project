@@ -16,7 +16,8 @@ module.exports = function () {
   //Loading User model
   require("../models/user.server.models");
   require("../models/clinicalVisit.server.model");
-
+  require("../models/alert.server.model");
+  require("../models/motivationalTips.server.model");
 
   return db;
 };

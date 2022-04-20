@@ -13,6 +13,8 @@ import { useAuthToken, useAuthUserToken,useAuthRoleToken } from "./config/auth";
 
 import VitalHistory from "./components/Nurse/VitalHistory";
 import VitalSigns from "./components/Nurse/VitalSigns";
+import EmergencyAlertHistory from "./components/Nurse/EmergencyAlertHistory";
+import MotivationalTips from "./components/Nurse/MotivationalTips";
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route exact path="/" element={<AuthGate><Nurse /></AuthGate>}/>
           <Route exact path="/vitalSigns" element={<VitalSigns />}/>
           <Route exact path="/vitalHistory" element={<VitalHistory />}/>
+          <Route exact path="/emergencyAlertHistory" element={<EmergencyAlertHistory />}/>
+          <Route exact path="/motivationalTipsView" element={<MotivationalTips />}/>
           </Routes>
           ): (
             <Routes>

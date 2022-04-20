@@ -1,6 +1,8 @@
 let mongoose = require("mongoose");
 let User = mongoose.model("User");
 let ClinicalVisit = mongoose.model("ClinicalVisit");
+let Alert = mongoose.model("Alert");
+let MotivationalTips = mongoose.model("MotivationalTips");
 
 let jwt = require("jsonwebtoken");
 let bcrypt = require("bcryptjs");
@@ -104,6 +106,30 @@ module.exports = {
     }
     catch (err) 
     {
+      return { message: err.message, status: "Failed" };
+    }
+  },
+  findAlerts: async () => {
+    try 
+    {
+      const alert = Alert.find();
+      console.log(alert);
+      return alert;
+    }
+    catch (err) 
+    {
+      return { message: err.message, status: "Failed" };
+    }
+  },
+  createMotivationalTips: async ({ tip }) => {
+    try {
+      console.log("here");
+      let tips = new MotivationalTips({
+        tip: tip
+      });
+      await tips.save();
+      return { message: "Motivational Tip Created", status: "Ok" };
+    } catch (err) {
       return { message: err.message, status: "Failed" };
     }
   },
