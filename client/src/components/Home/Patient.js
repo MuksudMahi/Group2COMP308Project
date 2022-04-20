@@ -29,14 +29,14 @@ export default function Patient(props) {
   return (
     <div>
       <NavBar />
-      <div className="container-fluid col-12 justify-content-center margins">
+      <br />
+      <div className="container-fluid col-6 justify-content-center margins">
         <div className="span12 div-style p-10">
-          <br />
-          <div className="text-dark title">
+          <div className="bg-danger text-light title">
             <h2 className="h2-style">Motivational Videos</h2>
           </div>
-          <br />
-          <br />
+      
+      
           {showLoading && (
             <Spinner animation="border" role="status">
               <span className="sr-only">Loading...</span>
