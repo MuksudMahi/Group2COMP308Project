@@ -11,6 +11,9 @@ import { useAppApolloClient } from "./config/apolloClient";
 import { gql, useQuery } from "@apollo/client";
 import { useAuthToken, useAuthUserToken,useAuthRoleToken } from "./config/auth";
 
+import VitalHistory from "./components/Nurse/VitalHistory";
+import VitalSigns from "./components/Nurse/VitalSigns";
+
 
 function App() {
   const apolloClient = useAppApolloClient();
@@ -19,22 +22,20 @@ function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <BrowserRouter>
-        <Routes>
+        
+          {authRoleToken === "Nurse"?(
+            <Routes>
+          <Route exact path="/" element={<AuthGate><Nurse /></AuthGate>}/>
+          <Route exact path="/vitalSigns" element={<VitalSigns />}/>
+          <Route exact path="/vitalHistory" element={<VitalHistory />}/>
+          </Routes>
+          ): (
+            <Routes>
           <Route
             exact
             path="/register"
             element={<AuthGate myProp={Register}></AuthGate>}
           ></Route>
-          {authRoleToken === "Nurse"?(
-          <Route
-            exact
-            path="/"
-            element={
-              <AuthGate>
-                <Nurse />
-              </AuthGate>
-            }
-          ></Route>): (
           <Route
             exact
             path="/"
@@ -43,8 +44,9 @@ function App() {
                 <Patient />
               </AuthGate>
             }
-          ></Route>)}
-        </Routes>
+          ></Route>
+          </Routes>
+          )}
       </BrowserRouter>
     </ApolloProvider>
   );

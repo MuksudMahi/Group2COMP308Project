@@ -1,5 +1,7 @@
 let mongoose = require("mongoose");
 let User = mongoose.model("User");
+let ClinicalVisit = mongoose.model("ClinicalVisit");
+
 let jwt = require("jsonwebtoken");
 let bcrypt = require("bcryptjs");
 let passport = require("passport");
@@ -62,6 +64,47 @@ module.exports = {
     } catch (error) {
       console.log(error);
       return error;
+    }
+  },
+  findUserByRole: async ({ role}) => {
+    try 
+    {
+      const user = User.find({ role });
+      console.log(user);
+      return user;
+    }
+    catch (err) 
+    {
+      return { message: err.message, status: "Failed" };
+    }
+  },
+  createClinicalVisit: async ({ bodyTemperature,heartRate, bloodPressure, respiratoryRate,nurse,patient}) => {
+    try {
+      console.log("here");
+      let clinicalVisitToSave = new ClinicalVisit({
+        bodyTemperature: bodyTemperature,
+        heartRate: heartRate,
+        bloodPressure: bloodPressure,
+        respiratoryRate: respiratoryRate,
+        nurse: nurse,
+        patient, patient
+      });
+      await clinicalVisitToSave.save();
+      return { message: "Clinical Visit Created", status: "Ok" };
+    } catch (err) {
+      return { message: err.message, status: "Failed" };
+    }
+  },
+  findClinicalVisitsByNurse: async ({nurse}) => {
+    try 
+    {
+      const clinicalVisit = ClinicalVisit.find({ nurse });
+      console.log(clinicalVisit);
+      return clinicalVisit;
+    }
+    catch (err) 
+    {
+      return { message: err.message, status: "Failed" };
     }
   },
 };

@@ -1,6 +1,4 @@
 import { useApolloClient } from "@apollo/react-hooks";
-
-
 import { useCookies } from "react-cookie";
 
 const TOKEN_NAME = "authToken";
@@ -34,10 +32,12 @@ export const useLogout = () => {
   const apolloClient = useApolloClient();
 
   const logout = async () => {
+
     await apolloClient.clearStore(); // we remove all information in the store
     removeAuthToken();
     removeAuthUserToken();
     removeAuthRoleToken();
+
   };
   return logout;
 };

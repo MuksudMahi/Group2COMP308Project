@@ -15,6 +15,8 @@ module.exports = function () {
 
   //Loading User model
   require("../models/user.server.models");
+  require("../models/clinicalVisit.server.model");
+
 
   return db;
 };
