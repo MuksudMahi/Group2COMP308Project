@@ -69,6 +69,7 @@ module.exports = graphql.buildSchema(`
         findClinicalVisitsByNurse(nurse:ID!):[ClinicalVisit]
         findAlerts:[Alert]
         findMotivationalTips(type:String!):[MotivationalTips]
+        findDailyLogsByNurse(nurse:ID!):[DailyLog]
     }
     schema{
         query:RootQuery
