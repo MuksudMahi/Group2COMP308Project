@@ -3,6 +3,7 @@ let User = mongoose.model("User");
 let ClinicalVisit = mongoose.model("ClinicalVisit");
 let Alert = mongoose.model("Alert");
 let MotivationalTips = mongoose.model("MotivationalTips");
+let DailyLog = mongoose.model("DailyLogSchema");
 
 let jwt = require("jsonwebtoken");
 let bcrypt = require("bcryptjs");
@@ -89,7 +90,7 @@ module.exports = {
         bloodPressure: bloodPressure,
         respiratoryRate: respiratoryRate,
         nurse: nurse,
-        patient, patient
+        patient: patient
       });
       await clinicalVisitToSave.save();
       return { message: "Clinical Visit Created", status: "Ok" };
@@ -132,5 +133,52 @@ module.exports = {
     } catch (err) {
       return { message: err.message, status: "Failed" };
     }
+  },
+  createEmergencyAlert: async ({patient,message})=>{
+
+    try {
+      let alert = new Alert({
+        message:message,
+        unread:true,
+        patient: patient
+      });
+      await alert.save();
+      return { message: "Emergency Alert Created", status: "Ok" };
+    } catch (err) {
+      return { message: err.message, status: "Failed" };
+    }
+
+  },
+  findMotivationalTips:()=>{
+    try 
+    {
+      const motivationalTip = MotivationalTips.find();
+      console.log(motivationalTip);
+      return motivationalTip;
+    }
+    catch (err) 
+    {
+      return { message: err.message, status: "Failed" };
+    }
+  },
+  createDailyLog: async ({pulse,bodyTemperature,bloodPressure,respiratoryRate, nurse, patient,weight,temperature})=>{
+
+    try{
+      let dailyLog = new DailyLog({
+        pulse:pulse,
+        bodyTemperature: bodyTemperature,
+        bloodPressure: bloodPressure,
+        respiratoryRate: respiratoryRate,
+        weight:weight,
+        temperature:temperature,
+        nurse: nurse,
+        patient: patient
+      });
+      await dailyLog.save();
+      return { 
+        message: "Daily Log Created", status: "Ok" };
+      } catch (err) {
+        return { message: err.message, status: "Failed" };
+      }
   },
 };

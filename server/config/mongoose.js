@@ -13,11 +13,12 @@ module.exports = function () {
       console.log("Error");
     });
 
-  //Loading User model
+  //Load MongoDB Schemas
   require("../models/user.server.models");
   require("../models/clinicalVisit.server.model");
   require("../models/alert.server.model");
   require("../models/motivationalTips.server.model");
+  require("../models/dailyLog.server.model");
 
   return db;
 };

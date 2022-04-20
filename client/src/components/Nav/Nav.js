@@ -1,6 +1,7 @@
 import { Nav, Container, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useLogout,useAuthRoleToken } from "../../config/auth";
+import Logo from "../../logo192.png"
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +17,7 @@ export default function NavBar() {
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
           <Navbar.Brand onClick={() => navigate("/")}>
-            Course Registration
+          Medical Connect
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -47,7 +48,7 @@ export default function NavBar() {
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
           <Navbar.Brand onClick={() => navigate("/")}>
-            Course Registration
+          Medical Connect
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

@@ -38,22 +38,37 @@ module.exports = graphql.buildSchema(`
         id:ID 
         role:String
     }
+    type DailyLog{
+        _id: ID!,
+        pulse:String!,
+        bloodPressure:String!,
+        weight:String!,
+        temperature:String!,
+        respiratoryRate: String!,
+        nurse: ID,
+        patient: ID,
+        created:Date!
+    }
     type MessageReturn{
         message:String 
         status:String  
     }
+    
 
     type RootMutation{
         createUser(username:String!, password:String!, role:String!):MessageReturn!
         login(username:String!,password:String!):LoginReturnType!
         createClinicalVisit(bodyTemperature:Int!, heartRate:Int!, bloodPressure:String!,respiratoryRate: Int!,nurse: String,patient: String):MessageReturn!
         createMotivationalTips(tip:String!):MessageReturn!
+        createEmergencyAlert(patient:String!,message:String!):MessageReturn!
+        createDailyLog(pulse:String!,bodyTemperature:String!,bloodPressure:String!,respiratoryRate:String!, nurse:String!, patient:String!,weight:String!,temperature:String!):MessageReturn!
     }
     type RootQuery{
         user(userId:String!):User!
         findUserByRole(role:String!):[User]
         findClinicalVisitsByNurse(nurse:ID!):[ClinicalVisit]
         findAlerts:[Alert]
+        findMotivationalTips:[MotivationalTips]
     }
     schema{
         query:RootQuery

@@ -9,7 +9,7 @@ export default function Home(props) {
   return (
     <div>
       <NavBar />
-      <h1 className="Home">Welcome to course registration website</h1>
+      <h1 className="Home">Welcome to Medical Connect website</h1>
     </div>
   );
 }
