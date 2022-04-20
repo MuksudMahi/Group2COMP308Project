@@ -59,7 +59,7 @@ module.exports = graphql.buildSchema(`
         createUser(username:String!, password:String!, role:String!):MessageReturn!
         login(username:String!,password:String!):LoginReturnType!
         createClinicalVisit(bodyTemperature:Int!, heartRate:Int!, bloodPressure:String!,respiratoryRate: Int!,nurse: String,patient: String):MessageReturn!
-        createMotivationalTips(tip:String!):MessageReturn!
+        createMotivationalTips(type: String!, tip:String!):MessageReturn!
         createEmergencyAlert(patient:String!,message:String!):MessageReturn!
         createDailyLog(pulse:String!,bodyTemperature:String!,bloodPressure:String!,respiratoryRate:String!, nurse:String!, patient:String!,weight:String!):MessageReturn!
     }
@@ -68,7 +68,7 @@ module.exports = graphql.buildSchema(`
         findUserByRole(role:String!):[User]
         findClinicalVisitsByNurse(nurse:ID!):[ClinicalVisit]
         findAlerts:[Alert]
-        findMotivationalTips:[MotivationalTips]
+        findMotivationalTips(type:String!):[MotivationalTips]
         findDailyLogsByNurse(nurse:ID!):[DailyLog]
     }
     schema{
