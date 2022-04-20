@@ -43,7 +43,7 @@ module.exports = graphql.buildSchema(`
         pulse:String!,
         bloodPressure:String!,
         weight:String!,
-        temperature:String!,
+        bodyTemperature:String!,
         respiratoryRate: String!,
         nurse: ID,
         patient: ID,
@@ -61,7 +61,7 @@ module.exports = graphql.buildSchema(`
         createClinicalVisit(bodyTemperature:Int!, heartRate:Int!, bloodPressure:String!,respiratoryRate: Int!,nurse: String,patient: String):MessageReturn!
         createMotivationalTips(tip:String!):MessageReturn!
         createEmergencyAlert(patient:String!,message:String!):MessageReturn!
-        createDailyLog(pulse:String!,bodyTemperature:String!,bloodPressure:String!,respiratoryRate:String!, nurse:String!, patient:String!,weight:String!,temperature:String!):MessageReturn!
+        createDailyLog(pulse:String!,bodyTemperature:String!,bloodPressure:String!,respiratoryRate:String!, nurse:String!, patient:String!,weight:String!):MessageReturn!
     }
     type RootQuery{
         user(userId:String!):User!

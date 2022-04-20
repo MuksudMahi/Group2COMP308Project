@@ -14,8 +14,7 @@ const DailyLogSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  weight:String,
-  temperature:String,
+  weight: String,
   created: {
     type: Date,
     default: Date.now,

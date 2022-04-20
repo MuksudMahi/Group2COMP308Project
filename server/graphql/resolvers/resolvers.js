@@ -63,25 +63,29 @@ module.exports = {
       );
       //console.log(req.isAuth);
       console.log("Before return");
-      return { token, id: user._id ,role:user.role};
+      return { token, id: user._id, role: user.role };
     } catch (error) {
       console.log(error);
       return error;
     }
   },
-  findUserByRole: async ({ role}) => {
-    try 
-    {
+  findUserByRole: async ({ role }) => {
+    try {
       const user = User.find({ role });
       console.log(user);
       return user;
-    }
-    catch (err) 
-    {
+    } catch (err) {
       return { message: err.message, status: "Failed" };
     }
   },
-  createClinicalVisit: async ({ bodyTemperature,heartRate, bloodPressure, respiratoryRate,nurse,patient}) => {
+  createClinicalVisit: async ({
+    bodyTemperature,
+    heartRate,
+    bloodPressure,
+    respiratoryRate,
+    nurse,
+    patient,
+  }) => {
     try {
       console.log("here");
       let clinicalVisitToSave = new ClinicalVisit({
@@ -90,7 +94,7 @@ module.exports = {
         bloodPressure: bloodPressure,
         respiratoryRate: respiratoryRate,
         nurse: nurse,
-        patient: patient
+        patient: patient,
       });
       await clinicalVisitToSave.save();
       return { message: "Clinical Visit Created", status: "Ok" };
@@ -98,27 +102,21 @@ module.exports = {
       return { message: err.message, status: "Failed" };
     }
   },
-  findClinicalVisitsByNurse: async ({nurse}) => {
-    try 
-    {
+  findClinicalVisitsByNurse: async ({ nurse }) => {
+    try {
       const clinicalVisit = ClinicalVisit.find({ nurse });
       console.log(clinicalVisit);
       return clinicalVisit;
-    }
-    catch (err) 
-    {
+    } catch (err) {
       return { message: err.message, status: "Failed" };
     }
   },
   findAlerts: async () => {
-    try 
-    {
+    try {
       const alert = Alert.find();
       console.log(alert);
       return alert;
-    }
-    catch (err) 
-    {
+    } catch (err) {
       return { message: err.message, status: "Failed" };
     }
   },
@@ -126,7 +124,7 @@ module.exports = {
     try {
       console.log("here");
       let tips = new MotivationalTips({
-        tip: tip
+        tip: tip,
       });
       await tips.save();
       return { message: "Motivational Tip Created", status: "Ok" };
@@ -134,51 +132,55 @@ module.exports = {
       return { message: err.message, status: "Failed" };
     }
   },
-  createEmergencyAlert: async ({patient,message})=>{
-
+  createEmergencyAlert: async ({ patient, message }) => {
     try {
       let alert = new Alert({
-        message:message,
-        unread:true,
-        patient: patient
+        message: message,
+        unread: true,
+        patient: patient,
       });
       await alert.save();
       return { message: "Emergency Alert Created", status: "Ok" };
     } catch (err) {
       return { message: err.message, status: "Failed" };
     }
-
   },
-  findMotivationalTips:()=>{
-    try 
-    {
+  findMotivationalTips: () => {
+    try {
       const motivationalTip = MotivationalTips.find();
       console.log(motivationalTip);
       return motivationalTip;
-    }
-    catch (err) 
-    {
+    } catch (err) {
       return { message: err.message, status: "Failed" };
     }
   },
-  createDailyLog: async ({pulse,bodyTemperature,bloodPressure,respiratoryRate, nurse, patient,weight,temperature})=>{
-
-    try{
+  createDailyLog: async ({
+    pulse,
+    bodyTemperature,
+    bloodPressure,
+    respiratoryRate,
+    nurse,
+    patient,
+    weight,
+  }) => {
+    try {
+      console.log("Here");
       let dailyLog = new DailyLog({
-        pulse:pulse,
+        pulse: pulse,
         bodyTemperature: bodyTemperature,
         bloodPressure: bloodPressure,
         respiratoryRate: respiratoryRate,
-        weight:weight,
-        temperature:temperature,
+        weight: weight,
         nurse: nurse,
-        patient: patient
+        patient: patient,
       });
       await dailyLog.save();
-      return { 
-        message: "Daily Log Created", status: "Ok" };
-      } catch (err) {
-        return { message: err.message, status: "Failed" };
-      }
+      return {
+        message: "Daily Log Created",
+        status: "Ok",
+      };
+    } catch (err) {
+      return { message: err.message, status: "Failed" };
+    }
   },
 };
