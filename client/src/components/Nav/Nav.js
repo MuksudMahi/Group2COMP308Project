@@ -76,7 +76,7 @@ export default function NavBar() {
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link onClick={logout}>Logout</Nav.Link>
+                <Nav.Link onClick={logout} href="/">Logout</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
