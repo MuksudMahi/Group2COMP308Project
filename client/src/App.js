@@ -10,6 +10,7 @@ import { useAppApolloClient } from "./config/apolloClient";
 import { useAuthRoleToken } from "./config/auth";
 
 import VitalHistory from "./components/Nurse/VitalHistory";
+import PatientDailyLogs from "./components/Nurse/PatientDailyLogs";
 import VitalSigns from "./components/Nurse/VitalSigns";
 import EmergencyAlertHistory from "./components/Nurse/EmergencyAlertHistory";
 import MotivationalTips from "./components/Nurse/MotivationalTips";
@@ -37,6 +38,7 @@ function App() {
             />
             <Route exact path="/vitalSigns" element={<VitalSigns />} />
             <Route exact path="/vitalHistory" element={<VitalHistory />} />
+            <Route exact path="/patientDailyLogs" element={<PatientDailyLogs />} />
             <Route
               exact
               path="/emergencyAlertHistory"

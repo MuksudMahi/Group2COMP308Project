@@ -9,17 +9,19 @@ import { useAuthToken, useAuthUserToken,useAuthRoleToken } from "../../config/au
 
 
 export const getVitalHistory = gql`
-query nurse($nurse: ID!) {
-    findClinicalVisitsByNurse(nurse:$nurse) {
-        _id,
-        bodyTemperature,
-        heartRate,
-        bloodPressure,
-        respiratoryRate,
-        nurse,
-        patient
+query daily($nurse:ID!) {
+    findDailyLogsByNurse(nurse:$nurse) {
+      _id,
+      pulse,
+      bloodPressure,
+      weight,
+      bodyTemperature,
+      respiratoryRate,
+      nurse,
+      patient,
+      created
     }
-  }
+  }  
 `;
 
 function VitalHistory(props) {
@@ -42,11 +44,11 @@ function VitalHistory(props) {
         <div className="container-fluid col-12 justify-content-center margins">
             <div className="span12 div-style p-10">
                 <div className="bg-danger text-light title">
-                <h2 className="h2-style">Search Vital History</h2>
+                <h2 className="h2-style">Search Patient Daily Logs</h2>
                 </div>
                 <br />
                 <br />
-
+                
                 {showLoading && (
                     <Spinner animation="border" role="status">
                         <span className="sr-only">Loading...</span>
@@ -65,25 +67,29 @@ function VitalHistory(props) {
                                 <tr>
                                     <th>No.</th>
                                     <th>Body Temperature</th>
-                                    <th>Heart Rate</th>
+                                    <th>Weight</th>
+                                    <th>Pulse</th>
                                     <th>Blood Pressure</th>
                                     <th>Respiratory Rate</th>
                                     <th>Patient ID</th>
+                                    <th>Date</th>
                                 </tr>
                                 </thead>
 
                                 {
                                     !loading && <tbody className="tr p-10">
                                         {
-                                            data.findClinicalVisitsByNurse.map((item, index) => {
+                                            data.findDailyLogsByNurse.map((item, index) => {
                                                 return (
                                                     <tr key={item._id}>
                                                         <td>{index + 1}</td>
                                                         <td>{item.bodyTemperature}</td>
-                                                        <td>{item.heartRate}</td>
+                                                        <td>{item.weight}</td>
+                                                        <td>{item.pulse}</td>
                                                         <td>{item.bloodPressure}</td>
                                                         <td>{item.respiratoryRate}</td>
                                                         <td>{item.patient}</td>
+                                                        <td>{item.created}</td>
                                                     </tr>
                                                 )
                                             })

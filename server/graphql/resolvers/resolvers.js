@@ -183,4 +183,13 @@ module.exports = {
       return { message: err.message, status: "Failed" };
     }
   },
+  findDailyLogsByNurse: async ({ nurse }) => {
+    try {
+      const dailyLog = DailyLog.find({ nurse });
+      console.log(dailyLog);
+      return dailyLog;
+    } catch (err) {
+      return { message: err.message, status: "Failed" };
+    }
+  },
 };

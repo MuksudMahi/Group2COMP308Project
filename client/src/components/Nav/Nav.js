@@ -33,6 +33,9 @@ export default function NavBar() {
                 <Nav.Link href="/vitalHistory">Vital History</Nav.Link>
               </Nav>
               <Nav>
+                <Nav.Link href="/patientDailyLogs">Patient Daily Logs</Nav.Link>
+              </Nav>
+              <Nav>
                 <Nav.Link href="/motivationalTipsView">
                   Add Motivational Tips
                 </Nav.Link>
