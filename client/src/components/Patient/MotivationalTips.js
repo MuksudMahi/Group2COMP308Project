@@ -5,8 +5,8 @@ import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client";
 
 export const getHealthTips = gql`
-  query findMotivationalTips {
-    findMotivationalTips {
+  query findMotivationalTips($type: String!) {
+    findMotivationalTips(type: $type) {
       tip
     }
   }
@@ -16,7 +16,9 @@ export default function HealthTips(props) {
     setShowLoading(true);
     refetch().then(setShowLoading(false));
   }, []);
-  const { data, loading, refetch } = useQuery(getHealthTips);
+  const { data, loading, refetch } = useQuery(getHealthTips, {
+    variables: { type: "Tip" },
+  });
   const [showLoading, setShowLoading] = useState(false);
   const [showError, setShowError] = useState(false);
   return (

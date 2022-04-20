@@ -120,10 +120,11 @@ module.exports = {
       return { message: err.message, status: "Failed" };
     }
   },
-  createMotivationalTips: async ({ tip }) => {
+  createMotivationalTips: async ({ type, tip }) => {
     try {
       console.log("here");
       let tips = new MotivationalTips({
+        type: type,
         tip: tip,
       });
       await tips.save();
@@ -145,9 +146,9 @@ module.exports = {
       return { message: err.message, status: "Failed" };
     }
   },
-  findMotivationalTips: () => {
+  findMotivationalTips: ({ type }) => {
     try {
-      const motivationalTip = MotivationalTips.find();
+      const motivationalTip = MotivationalTips.find({ type: type });
       console.log(motivationalTip);
       return motivationalTip;
     } catch (err) {
