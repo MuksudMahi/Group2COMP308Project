@@ -17,6 +17,8 @@ import MotivationalTips from "./components/Nurse/MotivationalTips";
 import EmergencyAlert from "./components/Patient/EmergencyAlert";
 import DailyLog from "./components/Patient/DailyLog";
 import HealthTips from "./components/Patient/MotivationalTips";
+import DiseasePredictor from "./components/Patient/DiseasePredictor";
+
 
 function App() {
   const apolloClient = useAppApolloClient();
@@ -90,6 +92,15 @@ function App() {
               element={
                 <AuthGate>
                   <HealthTips />
+                </AuthGate>
+              }
+            ></Route>
+            <Route
+              exact
+              path="/diseasePredictor"
+              element={
+                <AuthGate>
+                  <DiseasePredictor/>
                 </AuthGate>
               }
             ></Route>

@@ -62,6 +62,7 @@ module.exports = graphql.buildSchema(`
         createMotivationalTips(type: String!, tip:String!):MessageReturn!
         createEmergencyAlert(patient:String!,message:String!):MessageReturn!
         createDailyLog(pulse:String!,bodyTemperature:String!,bloodPressure:String!,respiratoryRate:String!, nurse:String!, patient:String!,weight:String!):MessageReturn!
+        heartDiseasePredict(age:Int!,sex:Int!,cp:Int!,trestbps:Int!,chol:Int!,fbs:Int!,restecg:Int!,thalach:Int!,exang:Int!,oldpeak:Float!,slope:Int!,ca:Int!,thal:Int!):MessageReturn!
     }
     type RootQuery{
         user(userId:String!):User!
@@ -70,6 +71,8 @@ module.exports = graphql.buildSchema(`
         findAlerts:[Alert]
         findMotivationalTips(type:String!):[MotivationalTips]
         findDailyLogsByNurse(nurse:ID!):[DailyLog]
+       
+
     }
     schema{
         query:RootQuery

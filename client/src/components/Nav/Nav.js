@@ -74,6 +74,9 @@ export default function NavBar() {
                 <Nav.Link onClick={() => navigate("/tips")}>
                   Health Tips
                 </Nav.Link>
+                <Nav.Link onClick={() => navigate("/diseasePredictor")}>
+                  Disease Predictor
+                </Nav.Link>
               </Nav>
               <Nav>
                 <Nav.Link onClick={logout} href="/">Logout</Nav.Link>
