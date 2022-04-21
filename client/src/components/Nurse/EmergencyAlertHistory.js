@@ -37,7 +37,7 @@ function EmergencyAlertHistory(props) {
       <div className="container-fluid col-10 div-right margins">
         <div className="span12 div-style p-10">
           <div className="bg-danger text-light title">
-            <h2 className="h2-style">Create Daily Log</h2>
+            <h2 className="h2-style">Emergency Alert History</h2>
           </div>
 
           {showLoading && (
