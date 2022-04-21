@@ -19,7 +19,6 @@ import DailyLog from "./components/Patient/DailyLog";
 import HealthTips from "./components/Patient/MotivationalTips";
 import DiseasePredictor from "./components/Patient/DiseasePredictor";
 
-
 function App() {
   const apolloClient = useAppApolloClient();
   const [authRoleToken] = useAuthRoleToken();
@@ -38,18 +37,50 @@ function App() {
                 </AuthGate>
               }
             />
-            <Route exact path="/vitalSigns" element={<VitalSigns />} />
-            <Route exact path="/vitalHistory" element={<VitalHistory />} />
-            <Route exact path="/patientDailyLogs" element={<PatientDailyLogs />} />
+            <Route
+              exact
+              path="/vitalSigns"
+              element={
+                <AuthGate>
+                  <VitalSigns />
+                </AuthGate>
+              }
+            />
+            <Route
+              exact
+              path="/vitalHistory"
+              element={
+                <AuthGate>
+                  <VitalHistory />
+                </AuthGate>
+              }
+            />
+            <Route
+              exact
+              path="/patientDailyLogs"
+              element={
+                <AuthGate>
+                  <PatientDailyLogs />
+                </AuthGate>
+              }
+            />
             <Route
               exact
               path="/emergencyAlertHistory"
-              element={<EmergencyAlertHistory />}
+              element={
+                <AuthGate>
+                  <EmergencyAlertHistory />
+                </AuthGate>
+              }
             />
             <Route
               exact
               path="/motivationalTipsView"
-              element={<MotivationalTips />}
+              element={
+                <AuthGate>
+                  <MotivationalTips />
+                </AuthGate>
+              }
             />
           </Routes>
         ) : (
@@ -100,7 +131,7 @@ function App() {
               path="/diseasePredictor"
               element={
                 <AuthGate>
-                  <DiseasePredictor/>
+                  <DiseasePredictor />
                 </AuthGate>
               }
             ></Route>

@@ -30,25 +30,27 @@ export default function NavBar() {
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link href="/vitalHistory">Vital History</Nav.Link>
+                <Nav.Link onClick={() => navigate("/vitalHistory")}>
+                  Vital History
+                </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link href="/patientDailyLogs">Patient Daily Logs</Nav.Link>
+                <Nav.Link onClick={() => navigate("/patientDailyLogs")}>
+                  Patient Daily Logs
+                </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link href="/motivationalTipsView">
+                <Nav.Link onClick={() => navigate("/motivationalTipsView")}>
                   Add Motivational Tips
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link href="/emergencyAlertHistory">
+                <Nav.Link onClick={() => navigate("/emergencyAlertHistory")}>
                   Emergency Alert History
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link onClick={logout} href="/">
-                  Logout
-                </Nav.Link>
+                <Nav.Link onClick={logout}>Logout</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -79,7 +81,7 @@ export default function NavBar() {
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link onClick={logout} href="/">Logout</Nav.Link>
+                <Nav.Link onClick={logout}>Logout</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
